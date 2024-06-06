@@ -13,5 +13,7 @@
             "email": "amuztaba18@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/dotenv": "^7.1"
+    }
 }
