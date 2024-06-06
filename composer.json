@@ -1,0 +1,17 @@
+{
+    "name": "asifmuztaba/user-management",
+    "description": "A simple User Management System for administrators to perform CRUD operations on user records with basic authentication and user listing.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Asifmuztaba\\UserManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "asifmuztaba1",
+            "email": "amuztaba18@gmail.com"
+        }
+    ],
+    "require": {}
+}
