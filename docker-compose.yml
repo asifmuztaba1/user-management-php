@@ -1,0 +1,53 @@
+services:
+  php:
+    container_name: user_management_php
+    build:
+      context: docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "9000:80"
+    depends_on:
+      - db
+    networks:
+      - usermanagement
+
+  nginx:
+    container_name: user_management_nginx
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - '8080:80'
+      - '443:443'
+    depends_on:
+      - php
+    networks:
+      - usermanagement
+
+  db:
+    container_name: user_management_db
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - usermanagement
+
+volumes:
+  db_data:
+networks:
+  usermanagement:
+     driver: bridge
