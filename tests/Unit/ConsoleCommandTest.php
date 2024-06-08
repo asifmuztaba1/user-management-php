@@ -1,13 +1,26 @@
-// tests/ConsoleCommandTest.php
 <?php
+
+namespace Unit;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ *
+ */
 class ConsoleCommandTest extends TestCase
 {
-    private $migrationsDirectory = __DIR__ . '/../../src/Migrations';
-    private $createdFiles = [];
+    /**
+     * @var string
+     */
+    private string $migrationsDirectory = __DIR__ . '/../../src/Migrations';
+    /**
+     * @var array
+     */
+    private array $createdFiles = [];
 
+    /**
+     * @return void
+     */
     public function testMakeMigration()
     {
         $command = 'php ' . __DIR__ . '/../../src/Console/make.php makemigration name:testMigration';
@@ -23,12 +36,18 @@ class ConsoleCommandTest extends TestCase
         }
     }
 
+    /**
+     * @return string|null
+     */
     private function getFirstMigrationFile(): ?string
     {
         $files = glob($this->migrationsDirectory . '/*.php');
         return $files[0] ?? null;
     }
 
+    /**
+     * @return void
+     */
     public function testMigrate()
     {
         $migrationFile = $this->getFirstMigrationFile();
@@ -42,6 +61,9 @@ class ConsoleCommandTest extends TestCase
         $this->assertStringContainsString('Ran migration:', implode("\n", $output));
     }
 
+    /**
+     * @return string
+     */
     private function createMockMigrationFile(): string
     {
         $migrationFile = $this->migrationsDirectory . '/MockMigration.php';
@@ -67,6 +89,9 @@ class ConsoleCommandTest extends TestCase
         return $migrationFile;
     }
 
+    /**
+     * @return void
+     */
     public function testMigrateAll()
     {
         // Ensure the migration file exists before running the migrateall command
@@ -79,6 +104,9 @@ class ConsoleCommandTest extends TestCase
         $this->assertStringContainsString('All migrations ran successfully.', implode("\n", $output));
     }
 
+    /**
+     * @return void
+     */
     public function testRollBack()
     {
         // Ensure the migration file exists before running the rollback command
@@ -91,6 +119,9 @@ class ConsoleCommandTest extends TestCase
         $this->assertStringContainsString('Migration Rollback successfully.', implode("\n", $output));
     }
 
+    /**
+     * @return void
+     */
     protected function setUp(): void
     {
         // Create migrations directory if it doesn't exist
@@ -99,6 +130,9 @@ class ConsoleCommandTest extends TestCase
         }
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         foreach ($this->createdFiles as $file) {
