@@ -98,10 +98,10 @@ class DatabaseManager
     /**
      * @param string $tableName
      * @param array $conditions
-     * @param $columns
+     * @param string $columns
      * @return false|array
      */
-    public function select(string $tableName, array $conditions = [], $columns = '*'): false|array
+    public function select(string $tableName, array $conditions = [], string $columns = '*'): false|array
     {
         $sql = "SELECT $columns FROM $tableName";
         if (!empty($conditions)) {
