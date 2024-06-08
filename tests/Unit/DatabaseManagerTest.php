@@ -5,10 +5,19 @@ namespace Unit;
 use Asifmuztaba\UserManagement\Managers\DatabaseManager;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * This is test for database service
+ */
 class DatabaseManagerTest extends TestCase
 {
-    private $databaseManager;
+    /**
+     * @var DatabaseManager
+     */
+    private DatabaseManager $databaseManager;
 
+    /**
+     * @return void
+     */
     public function testCreateTable()
     {
         $this->databaseManager->createTable('test_table', [
@@ -20,6 +29,9 @@ class DatabaseManagerTest extends TestCase
         $this->assertNotFalse($result);
     }
 
+    /**
+     * @return void
+     */
     public function testInsertAndSelect()
     {
         $this->databaseManager->createTable('test_table', [
@@ -33,6 +45,9 @@ class DatabaseManagerTest extends TestCase
         $this->assertEquals('Test Name', $result[0]['name']);
     }
 
+    /**
+     * @return void
+     */
     public function testUpdate()
     {
         $this->databaseManager->createTable('test_table', [
@@ -46,6 +61,9 @@ class DatabaseManagerTest extends TestCase
         $this->assertEquals('New Name', $result[0]['name']);
     }
 
+    /**
+     * @return void
+     */
     public function testDelete()
     {
         $this->databaseManager->createTable('test_table', [
@@ -59,11 +77,17 @@ class DatabaseManagerTest extends TestCase
         $this->assertCount(0, $result);
     }
 
+    /**
+     * @return void
+     */
     protected function setUp(): void
     {
         $this->databaseManager = new DatabaseManager();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         $this->databaseManager->dropTable('test_table');
