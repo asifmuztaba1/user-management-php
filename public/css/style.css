@@ -1,0 +1,99 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #263238;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.logo {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #1c313a;
+}
+
+.logo h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    width: 100%;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #455a64;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-content h1 {
+    margin: 0;
+}
+
+.content {
+    margin-top: 2rem;
+}
+
+.cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 250px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
