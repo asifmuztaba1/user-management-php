@@ -22,7 +22,6 @@ class MakeMigration
 
         namespace Asifmuztaba\UserManagement\Migrations;
 
-        use Asifmuztaba\UserManagement\Database\Database;
 
         return new class
         {
