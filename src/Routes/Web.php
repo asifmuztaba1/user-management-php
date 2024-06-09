@@ -2,8 +2,18 @@
 
 namespace Asifmuztaba\UserManagement\Routes;
 
+use Asifmuztaba\UserManagement\Controllers\RegistrationController;
+use Asifmuztaba\UserManagement\Managers\ContainerManager;
+
 class Web
 {
+    private ContainerManager $container;
+
+    public function __construct(ContainerManager $container)
+    {
+        $this->container = $container;
+    }
+
     public function handle()
     {
         session_start();
@@ -14,8 +24,18 @@ class Web
 
         switch ($uri) {
             case '':
-                http_response_code(200);
-                echo "Hello world";
+                require_once __DIR__ . '/../Views/dashboard.php';
+                break;
+            case 'login':
+                require_once __DIR__ . '/../Views/login.php';
+                break;
+            case 'register':
+                $registrationController = new RegistrationController($this->container);
+                if ($method === 'POST') {
+                    $registrationController->register();
+                } else {
+                    $registrationController->showRegistrationForm();
+                }
                 break;
             default:
                 http_response_code(404);
