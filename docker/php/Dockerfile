@@ -12,5 +12,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY ./ /var/www/html
 COPY php.ini /usr/local/etc/php/
+RUN chown -R www-data:www-data /var/www/html
 EXPOSE 9000
 CMD ["php-fpm"]
