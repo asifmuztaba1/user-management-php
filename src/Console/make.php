@@ -20,7 +20,7 @@ $command = $argv[1];
 // Handle commands
 switch ($command) {
     case 'makemigration':
-        // Example: php src/Console/make.php makemigration:migrationname
+        // Example: php src/Console/make.php makemigration name:migrationname
         $parts = explode(':', $argv[2] ?? '');
         $migrationName = $parts[1] ?? null;
 
@@ -34,7 +34,7 @@ switch ($command) {
         break;
 
     case 'migrate':
-        // Example: php src/Console/make.php migrate:migrationfile
+        // Example: php src/Console/make.php migrate name:migrationfile
         $parts = explode(':', $argv[2] ?? '');
         $migrationFile = $parts[1] ?? null;
 
